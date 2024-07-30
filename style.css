@@ -1,25 +1,60 @@
 #screen{
     display:flex;
-    flex: 1 1;
-}
-
-#calculator{
-    max-width:800px;
-    display: flex;
     flex-direction:column;
-    flex:1 1 auto;
 }
-
-.firstRow{
+  
+#allButtonsRow{
+    display:flex;
+    flex: 1 1 auto;
+    flex-direction:row;
+    max-width:602px;
+    height:400px;
+  }
+  
+#zero{
+    flex: 2;
+}
+  
+#leftColumnButtons{
+   display: flex;
+   flex-direction: column;
+   flex: 1 1 auto;
+}
+  
+.buttonsRow{
     flex:1;
     display: flex;
+    flex-direction: row;
 }
-
+  
 button{
     flex: 1;
 }
-
+  
 .calcButton{
     display:flex;
     flex: 1;
 }
+  
+#rightColumn{
+    max-width:20%;
+    flex:1;
+    display:flex;
+    flex-direction: column;
+}
+  
+#enter{
+    flex:3;
+}
+  
+#panel{
+    max-width:600px;
+    flex:1;
+    display:flex;
+    border: solid black 1px;
+    border-bottom:0;
+    justify-content:center;
+    align-items:center;
+    font-size:52px;
+}
+  
