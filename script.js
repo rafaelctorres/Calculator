@@ -89,8 +89,8 @@ buttons.forEach((button) => {
             operate(Number(firstValue),operator,Number(secondValue));
             secondValue = '';
             operator = button.textContent;
-            updatePanel();
             return;
+            updatePanel();
           }
           changingFirstValue = false;
           operator = button.textContent;
@@ -103,8 +103,11 @@ buttons.forEach((button) => {
           operate(Number(firstValue),operator,Number(secondValue));
           changingFirstValue = true;
           secondValue = '';
+          operator = '';
           updatePanel();
           return;
+        } else {
+
         }
         
         //addDigits(digit);
