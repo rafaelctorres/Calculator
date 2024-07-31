@@ -1,14 +1,14 @@
 #screen{
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
 }
   
 #allButtonsRow{
-    display:flex;
+    display: flex;
     flex: 1 1 auto;
-    flex-direction:row;
-    max-width:602px;
-    height:400px;
+    flex-direction: row;
+    max-width: 602px;
+    height: 400px;
   }
   
 #zero{
@@ -22,7 +22,7 @@
 }
   
 .buttonsRow{
-    flex:1;
+    flex: 1;
     display: flex;
     flex-direction: row;
 }
@@ -32,29 +32,29 @@ button{
 }
   
 .calcButton{
-    display:flex;
+    display: flex;
     flex: 1;
 }
   
 #rightColumn{
-    max-width:20%;
-    flex:1;
-    display:flex;
+    max-width: 20%;
+    flex: 1;
+    display: flex;
     flex-direction: column;
 }
   
 #enter{
-    flex:3;
+    flex: 3;
 }
   
 #panel{
-    max-width:600px;
-    flex:1;
-    display:flex;
+    max-width: 600px;
+    flex: 1;
+    display: flex;
     border: solid black 1px;
-    border-bottom:0;
-    justify-content:center;
-    align-items:center;
-    font-size:52px;
+    border-bottom: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 52px;
 }
   
