@@ -3,6 +3,8 @@ let secondValue = '';
 let operator;
 let changingFirstValue = true;
 let changingSecondValue = false;
+const buttons = document.querySelectorAll("button");
+const panel = document.querySelector("#panel");
 
 function updatePanel(){
   
@@ -35,8 +37,7 @@ function operate(a,operator,b){
             case "-":
               firstValue = subtract(a,b);
               break;
-    }
-  
+    }  
 }
 
 function sum(a,b){
@@ -55,7 +56,6 @@ function divide (a,b){
     let divided = a/b;
     divided = Math.round(divided * 100) / 100;
     return divided;
-
 }
 
 function multiply (a,b){
@@ -64,31 +64,32 @@ function multiply (a,b){
     return multiplied;
 }
 
-const buttons = document.querySelectorAll("button");
-const panel = document.querySelector("#panel");
-
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        if (panel.textContent == '0'){
+        //clearPanel(event); - could include what parameters for better readability?
+        if(e.target.id == "clear"){
+            changingFirstValue = true;
+            firstValue = 0;
+            secondValue = '';
+            operator='';
+            panel.textContent = 0;
+            return;
+          }
+        
+        //checkLoneZero(event);
+        if (panel.textContent == '0' && e.target.className=="number"){
           panel.textContent = button.textContent;
           firstValue = button.textContent;
           return 
         }
       
-        if(e.target.id == "clear"){
-          changingFirstValue = true;
-          firstValue = '';
-          secondValue = '';
-          panel.textContent = 0;
-          return;
-        }
-      
-        if(e.target.className=="operator"){
+        //checkOperator(event)
+        if(e.target.className == "operator"){
           if(changingFirstValue === false){
             operate(Number(firstValue),operator,Number(secondValue));
             secondValue = '';
             operator = button.textContent;
-            updatePanel()
+            updatePanel();
             return;
           }
           changingFirstValue = false;
@@ -96,22 +97,26 @@ buttons.forEach((button) => {
           updatePanel();
           return;
         } 
-      
-      
+    
+        //checkResult(event);
         if(e.target.id=="enterButton"){
           operate(Number(firstValue),operator,Number(secondValue));
           changingFirstValue = true;
           secondValue = '';
-          updatePanel()
+          updatePanel();
           return;
         }
-    
-      
+        
+        //addDigits(digit);
         if(changingFirstValue){
           firstValue = String(firstValue) + button.textContent;
         } else {
-          secondValue = String(secondValue) + button.textContent;
-        }
+          if(secondValue === '0'){
+            secondValue = button.textContent;
+          } else{
+                secondValue = String(secondValue) + button.textContent;
+            }
+          }
       
         updatePanel();
     });
