@@ -1,4 +1,4 @@
-let firstValue = '';
+let firstValue = 0;
 let secondValue = '';
 let operator;
 let changingFirstValue = true;
@@ -72,7 +72,7 @@ buttons.forEach((button) => {
             firstValue = 0;
             secondValue = '';
             operator='';
-            panel.textContent = 0;
+            updatePanel();
             return;
           }
         
