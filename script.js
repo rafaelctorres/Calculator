@@ -74,7 +74,7 @@ buttons.forEach((button) => {
             operator='';
             updatePanel();
             return;
-          }
+        }
         
         //checkLoneZero(event);
         if (panel.textContent == '0' && e.target.className=="number"){
@@ -85,7 +85,7 @@ buttons.forEach((button) => {
       
         //checkOperator(event)
         if(e.target.className == "operator"){
-          if(changingFirstValue === false){
+          if(changingFirstValue === false && secondValue != ''){
             operate(Number(firstValue),operator,Number(secondValue));
             secondValue = '';
             operator = button.textContent;
