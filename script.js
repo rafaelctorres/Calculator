@@ -15,14 +15,17 @@ function updatePanel(){
 }
 
 function operate(a,operator,b){
-  
     switch(operator){
             case "*":
               firstValue = multiply(a,b);
               break;
               
             case "/":
-              firstValue = divide(a,b);
+            if(b==0){
+               alert("Error: impossible to divide by 0")
+               break;
+            }
+              firstValue = divide(a,b)
               break;
               
             case "+":
@@ -66,7 +69,12 @@ const panel = document.querySelector("#panel");
 
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        
+        if (panel.textContent == '0'){
+          panel.textContent = button.textContent;
+          firstValue = button.textContent;
+          return 
+        }
+      
         if(e.target.id == "clear"){
           changingFirstValue = true;
           firstValue = '';
@@ -77,18 +85,18 @@ buttons.forEach((button) => {
       
         if(e.target.className=="operator"){
           if(changingFirstValue === false){
-          operate(Number(firstValue),operator,Number(secondValue));
-          secondValue = '';
-          operator = button.textContent;
-          updatePanel()
-          return;
+            operate(Number(firstValue),operator,Number(secondValue));
+            secondValue = '';
+            operator = button.textContent;
+            updatePanel()
+            return;
           }
-          
           changingFirstValue = false;
           operator = button.textContent;
           updatePanel();
           return;
         } 
+      
       
         if(e.target.id=="enterButton"){
           operate(Number(firstValue),operator,Number(secondValue));
